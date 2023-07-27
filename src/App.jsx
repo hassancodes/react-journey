@@ -48,7 +48,7 @@ function App(){
     // setColor(colorr==="black" ? "red" : "black");
     const randomItem = colorlist[Math.floor(Math.random() * colorlist.length)];
     setColor(colorr=randomItem);
-    console.log("lol");
+
   }
 
   
