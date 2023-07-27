@@ -4,9 +4,34 @@ import {useState} from "react"
 
 
 // learning states
+
+
 function App(){
+
   const [password,setPassword]=useState("");
   const [passvis,setPassvis] = useState(true);
+  var [colorr, setColor]=useState("black");
+
+  // counter states
+  var [counter,setInc]=useState(0);
+
+  const increase=()=>{
+    setInc(counter=counter+1);
+  }
+
+  const decrease=()=>{
+    setInc(counter=counter-1);
+  }
+
+  const settozero=()=>{
+    setInc(counter=0);
+  }
+
+
+
+
+
+
 
   const writePass = (event)=>{
    setPassword(event.target.value);
@@ -15,19 +40,63 @@ function App(){
   const passvisibilty =()=>{
     setPassvis(!passvis)
     setPassword()
-    console.log(passvis)
   }
+
+  const colorChange=()=>{
+
+    const colorlist = ["red", "black","yellow","orange", "pink"]
+    // setColor(colorr==="black" ? "red" : "black");
+    const randomItem = colorlist[Math.floor(Math.random() * colorlist.length)];
+    setColor(colorr=randomItem);
+    console.log("lol");
+  }
+
+  
   return(
     <div className="main">
+
+      {/* this implements show and hide functionality */}
+      <h4>Learning how to show/hide elements</h4>
+      <div>
       {passvis===true &&  <input type="text" onChange={writePass}/>}
       <button onClick={passvisibilty}>show/hide</button>
       <br/>
       {password}
+      </div>
+
+
+
+      <br />
+      <hr />
+      <br />
+
+      <h4>Color Changing text component</h4>
+
+      <div>
+        <button onClick={colorChange}>ChangeColor</button>
+        <ColorComponent color={colorr} style={colorr}/>
+      </div>
+
+      <br />
+      <hr />
+      <br />
+      <h3>React Counter</h3>
+      <button onClick={increase}>Increase</button>
+      <button onClick={decrease}>Decrease</button>
+      <button onClick={settozero}>Set To Zero</button>
+      <h4>{counter}</h4>
+
     </div>
   );
 }
 
+const ColorComponent=(props)=>{
+  return <p style={{color:props.style}}>This is a {props.color} text</p>
+}
 
+const SpaceComponent=()=>{
+  
+}
 
 
 
