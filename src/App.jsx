@@ -1,6 +1,8 @@
 import "./App.css";
 import { Planets } from "./planets";
+import {Home,Contact,About} from "./Pages/Home"
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router,Routes,Route,Link } from "react-router-dom";
 
 // learning states
 
@@ -105,9 +107,7 @@ function App() {
         {password}
       </div>
 
-      <br />
-      <hr />
-      <br />
+      <SpaceComponent />
 
       <h4>Color Changing text component</h4>
 
@@ -125,9 +125,7 @@ function App() {
       <button onClick={settozero}>Set To Zero</button>
       <h4>{counter}</h4>
 
-      <br />
-      <hr />
-      <br />
+      <SpaceComponent />
 
       <h3>To Do list functionality</h3>
       <div className="addTask">
@@ -151,9 +149,7 @@ function App() {
         })}
       </div>
 
-      <br />
-      <hr />
-      <br />
+      <SpaceComponent />
 
       <div>
         <h3>Learning how to fetch in React</h3>
@@ -163,6 +159,29 @@ function App() {
           {fact}
         </div>
       </div>
+
+{/* learning Routes in React */}
+      <SpaceComponent />
+      <div>
+        <h3>Learning React Routers</h3>
+
+        <div>
+          <Router>
+            <h3>NavBar</h3>
+            <Link to={"/home"}>  Home  </Link>
+            <Link to={"/contact"}>  Contact  </Link>
+            <Link to={"/about"}>  About  </Link>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </Router>
+        </div>
+      </div>
+
+
+      <SpaceComponent />
     </div>
   );
 }
@@ -171,6 +190,10 @@ const ColorComponent = (props) => {
   return <p style={{ color: props.style }}>This is a {props.color} text</p>;
 };
 
-const SpaceComponent = () => {};
+const SpaceComponent = () => {
+  return (
+    <><br /><br /><hr /></>
+  );
+};
 
 export default App;
