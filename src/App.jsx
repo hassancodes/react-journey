@@ -51,6 +51,33 @@ function App(){
 
   }
 
+
+  // states for the to do list start here
+  const [newTask,setNewTask]=useState([]);
+  const [getTask,setGetTask]=useState("");
+
+
+  // this function will get the 
+  const detectTask = (event)=>{
+    setGetTask(event.target.value);
+  }
+
+  const addTaskFunction=()=>{
+    const task ={
+      id: newTask.length===0 ? 1 : newTask[newTask.length-1].id + 1,
+      taskName: getTask
+    }
+    const rawlist = [...newTask,task];
+    setNewTask(rawlist);
+  }
+
+  const deleteTask=(delTask)=>{
+    const updatedArr=newTask.filter((task)=>{
+      return task.id !==delTask
+    })
+    setNewTask(updatedArr);
+  }
+    // states for the to do list end here
   
   return(
     <div className="main">
@@ -86,9 +113,34 @@ function App(){
       <button onClick={settozero}>Set To Zero</button>
       <h4>{counter}</h4>
 
+
+      <br />
+      <hr />
+      <br />
+
+      <h3>To Do list functionality</h3>
+      <div className="addTask">
+        <input onChange={detectTask} />
+        {/* <p>{getTask}</p> */}
+        <button onClick={addTaskFunction}>Add New Task</button>
+      </div>
+      <div className="todo-main">
+      {newTask.map((value)=>{
+          return (
+          <div className="todo--child">
+            <h3>{value.taskName}</h3>
+            {/* when a function have a parameter we have to use an empty function that calls the actual function */}
+            <button onClick={()=>deleteTask(value.id)}>delete</button>
+          </div>)
+
+        })}
+      </div>
+
     </div>
   );
 }
+
+
 
 const ColorComponent=(props)=>{
   return <p style={{color:props.style}}>This is a {props.color} text</p>

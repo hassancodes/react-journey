@@ -3,3 +3,37 @@ body{
     font-family: 'Poppins', sans-serif;
     text-align: center;
 }
+
+html,body{
+    font-family: 'Poppins', sans-serif;
+}
+.todo-main{
+    /* border: 1px solid black; */
+    width:60%;
+    margin:auto;
+    padding: 20px 0px 20px 0px;
+    /* padding: 20px 0px 20px 0px; */
+
+}
+.todo--child{
+    border: 1px solid #252525;
+    margin:auto;
+    /* padding: 0px 10px 0px 10px; */
+    margin: 10px;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 10px;
+
+
+}
+
+.todo--child button{
+
+    border-radius: 5px;
+    width:25%;
+    height: 30px;
+    background-color: white;
+    border:1px solid green;
+    font-family: "Poppins";
+}
