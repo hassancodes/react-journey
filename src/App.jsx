@@ -1,12 +1,14 @@
 import "./App.css"
 import {Planets} from "./planets"
-import {useState} from "react"
+import {useState,useEffect} from "react"
 
 
 // learning states
 
 
 function App(){
+
+ 
 
   const [password,setPassword]=useState("");
   const [passvis,setPassvis] = useState(true);
@@ -65,7 +67,8 @@ function App(){
   const addTaskFunction=()=>{
     const task ={
       id: newTask.length===0 ? 1 : newTask[newTask.length-1].id + 1,
-      taskName: getTask
+      taskName: getTask,
+      completed:false
     }
     const rawlist = [...newTask,task];
     setNewTask(rawlist);
@@ -77,6 +80,22 @@ function App(){
     })
     setNewTask(updatedArr);
   }
+
+  const taskDone=(id)=>{
+    setNewTask(
+    newTask.map((task)=>{
+      if(task.id===id){
+        return {...task,completed:true};
+      }else{
+        return task;
+      }
+    }))
+
+  }
+
+
+
+
     // states for the to do list end here
   
   return(
@@ -127,9 +146,10 @@ function App(){
       <div className="todo-main">
       {newTask.map((value)=>{
           return (
-          <div className="todo--child">
+          <div className="todo--child" style={{backgroundColor : value.completed ? "green" : "yellow"}}>
             <h3>{value.taskName}</h3>
             {/* when a function have a parameter we have to use an empty function that calls the actual function */}
+            <button onClick={()=>taskDone(value.id)}>✅</button>
             <button onClick={()=>deleteTask(value.id)}>delete</button>
           </div>)
 

@@ -9,8 +9,7 @@ html,body{
 }
 .todo-main{
     /* border: 1px solid black; */
-    width:50%;
-    margin:auto;
+
     padding: 20px 0px 20px 0px;
     /* padding: 20px 0px 20px 0px; */
     display: flex;
@@ -21,10 +20,9 @@ html,body{
 }
 .todo--child{
     border: 1px solid #252525;
-    margin:auto;
-    max-width: 50%;
-    min-width: 60%;
+
     /* padding: 0px 10px 0px 10px; */
+    min-width: 400px;
     margin: 10px;
     display:flex;
     align-items: center;
