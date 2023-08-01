@@ -1,15 +1,21 @@
 import "./App.css";
 import { Planets } from "./planets";
-import {Home,Contact,About} from "./Pages/Home"
+import {Home,Contact,About} from "./Pages/Home";
+import {Profile} from "./Pages/profile";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes,Route,Link } from "react-router-dom";
+import {createContext} from "react";
 
 // learning states
+
+export const AppContext = createContext();
 
 function App() {
   const [password, setPassword] = useState("");
   const [passvis, setPassvis] = useState(true);
   var [colorr, setColor] = useState("black");
+  const [userName,setUserName] = useState("");
+  
 
   // counter states
   var [counter, setInc] = useState(0);
@@ -166,17 +172,22 @@ function App() {
         <h3>Learning React Routers</h3>
 
         <div>
+          <AppContext.Provider value={{userName,setUserName}}>
           <Router>
             <h3>NavBar</h3>
             <Link to={"/home"}>  Home  </Link>
             <Link to={"/contact"}>  Contact  </Link>
             <Link to={"/about"}>  About  </Link>
+            <Link to={"/profile"}> Profile</Link>
             <Routes>
+              {/* home and profile will share the username but only profile will be edit it */}
               <Route path="/home" element={<Home />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/about" element={<About />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </Router>
+          </AppContext.Provider>
         </div>
       </div>
 
