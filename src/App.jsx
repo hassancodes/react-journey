@@ -5,12 +5,14 @@ import {Profile} from "./Pages/profile";
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes,Route,Link } from "react-router-dom";
 import {createContext} from "react";
+import {QueryClient,QueryClientProvider} from "@tanstack/react-query";
 
 // learning states
 
 export const AppContext = createContext();
 
 function App() {
+  const client= new QueryClient();
   const [password, setPassword] = useState("");
   const [passvis, setPassvis] = useState(true);
   var [colorr, setColor] = useState("black");
@@ -172,6 +174,7 @@ function App() {
         <h3>Learning React Routers</h3>
 
         <div>
+          <QueryClientProvider client={client}>
           <AppContext.Provider value={{userName,setUserName}}>
           <Router>
             <h3>NavBar</h3>
@@ -188,13 +191,14 @@ function App() {
             </Routes>
           </Router>
           </AppContext.Provider>
+          </QueryClientProvider>
         </div>
       </div>
 
 
       <SpaceComponent />
       {/* Learning state management in React */}
-      
+
 
       
     </div>
