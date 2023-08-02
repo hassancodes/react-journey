@@ -14,7 +14,7 @@ export const Profile=()=>{
         setUserName(newUserName);
     }
     return (<div>
-        <h1>This is profile. user :{userName}</h1>
+        <h3>This is profile. user :{userName}</h3>
         <input onChange={(event)=>{setNewUserName(event.target.value);}}type="text" />
         <button onClick={updateFunction}>Rename User</button>
 

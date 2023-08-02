@@ -2,7 +2,11 @@
 body{
     font-family: 'Poppins', sans-serif;
     text-align: center;
+    width:80%;
+    margin:auto;
 }
+
+
 
 html,body{
     font-family: 'Poppins', sans-serif;
