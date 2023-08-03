@@ -10,7 +10,7 @@ export const Home =()=>{
     // first parameter is the id, second is the request.
     // we dont have to create the state for the data variable
     // test other capabilities as well
-    const {data,isLoading}= useQuery(["cat"],()=>{
+    const {data:catData,isLoading,refetch}= useQuery(["cat"],()=>{
         return Axios.get("https://catfact.ninja/fact").then((res)=>res.data);
     });
     if (isLoading){
@@ -20,7 +20,8 @@ export const Home =()=>{
     return (<div>
         <h3>This is Home page. user: {userName}</h3>
         {/* it will not access the data unless it not fetched/null */}
-        <p>{data?.fact}</p>
+        <p>{catData?.fact}</p>
+        <button onClick={refetch}>Fetch more fact</button>
     </div>);
 }
 

@@ -6,13 +6,19 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router,Routes,Route,Link } from "react-router-dom";
 import {createContext} from "react";
 import {QueryClient,QueryClientProvider} from "@tanstack/react-query";
+import {Form} from "./Pages/forms"
 
 // learning states
 
 export const AppContext = createContext();
 
 function App() {
-  const client= new QueryClient();
+  const client= new QueryClient({defaultOptions:{
+    queries:{
+      refetchOnWindowFocus:true,
+    },
+
+  }});
   const [password, setPassword] = useState("");
   const [passvis, setPassvis] = useState(true);
   var [colorr, setColor] = useState("black");
@@ -199,7 +205,8 @@ function App() {
       <SpaceComponent />
       {/* Learning state management in React */}
 
-
+      {/* learning forms in React starts from here  */}
+      <Form/>
       
     </div>
 
