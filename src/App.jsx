@@ -7,6 +7,7 @@ import { BrowserRouter as Router,Routes,Route,Link } from "react-router-dom";
 import {createContext} from "react";
 import {QueryClient,QueryClientProvider} from "@tanstack/react-query";
 import {Form} from "./Pages/forms"
+import {useForm} from "react-hook-form"; 
 
 // learning states
 
