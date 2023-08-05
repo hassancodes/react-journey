@@ -45,3 +45,14 @@ html,body{
     border:1px solid green;
     font-family: "Poppins";
 }
+
+.form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    align-items: center;
+    margin:auto;
+    border: 1px solid red;
+
+}
